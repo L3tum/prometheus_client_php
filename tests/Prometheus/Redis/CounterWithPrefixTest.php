@@ -1,15 +1,15 @@
 <?php
 
-namespace Test\Prometheus\Redis;
+namespace Prometheus\Redis;
 
 use Prometheus\Storage\Redis;
-use Test\Prometheus\AbstractHistogramTest;
+use Prometheus\AbstractCounterTest;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension redis
  */
-class HistogramWithPrefixTest extends AbstractHistogramTest
+class CounterWithPrefixTest extends AbstractCounterTest
 {
     public function configureAdapter()
     {

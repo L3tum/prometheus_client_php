@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Prometheus;
+namespace Prometheus;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

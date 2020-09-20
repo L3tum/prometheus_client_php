@@ -1,14 +1,15 @@
 <?php
 
-namespace Test\Prometheus\APC;
+namespace Prometheus\APC;
 
 use Prometheus\Storage\APC;
-use Test\Prometheus\AbstractCollectorRegistryTest;
+use Prometheus\AbstractGaugeTest;
 
 /**
+ * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension apc
  */
-class CollectorRegistryTest extends AbstractCollectorRegistryTest
+class GaugeTest extends AbstractGaugeTest
 {
     public function configureAdapter()
     {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Test\Prometheus\APC;
+namespace Prometheus\APC;
 
 use Prometheus\Storage\APC;
-use Test\Prometheus\AbstractHistogramTest;
+use Prometheus\AbstractCounterTest;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension apc
  */
-class HistogramTest extends AbstractHistogramTest
+class CounterTest extends AbstractCounterTest
 {
     public function configureAdapter()
     {

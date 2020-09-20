@@ -1,15 +1,14 @@
 <?php
 
-namespace Test\Prometheus\Redis;
+namespace Prometheus\Redis;
 
 use Prometheus\Storage\Redis;
-use Test\Prometheus\AbstractCounterTest;
+use Prometheus\AbstractCollectorRegistryTest;
 
 /**
- * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension redis
  */
-class CounterTest extends AbstractCounterTest
+class CollectorRegistryTest extends AbstractCollectorRegistryTest
 {
     public function configureAdapter()
     {

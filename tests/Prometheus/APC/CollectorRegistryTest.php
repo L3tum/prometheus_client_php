@@ -1,15 +1,14 @@
 <?php
 
-namespace Test\Prometheus\APC;
+namespace Prometheus\APC;
 
 use Prometheus\Storage\APC;
-use Test\Prometheus\AbstractCounterTest;
+use Prometheus\AbstractCollectorRegistryTest;
 
 /**
- * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension apc
  */
-class CounterTest extends AbstractCounterTest
+class CollectorRegistryTest extends AbstractCollectorRegistryTest
 {
     public function configureAdapter()
     {

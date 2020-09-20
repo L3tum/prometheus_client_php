@@ -1,15 +1,15 @@
 <?php
 
-namespace Test\Prometheus\Redis;
+namespace Prometheus\Redis;
 
 use Prometheus\Storage\Redis;
-use Test\Prometheus\AbstractGaugeTest;
+use Prometheus\AbstractHistogramTest;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension redis
  */
-class GaugeWithPrefixTest extends AbstractGaugeTest
+class HistogramWithPrefixTest extends AbstractHistogramTest
 {
     public function configureAdapter()
     {

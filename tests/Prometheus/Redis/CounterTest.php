@@ -1,15 +1,15 @@
 <?php
 
-namespace Test\Prometheus\Redis;
+namespace Prometheus\Redis;
 
 use Prometheus\Storage\Redis;
-use Test\Prometheus\AbstractGaugeTest;
+use Prometheus\AbstractCounterTest;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/
  * @requires extension redis
  */
-class GaugeTest extends AbstractGaugeTest
+class CounterTest extends AbstractCounterTest
 {
     public function configureAdapter()
     {

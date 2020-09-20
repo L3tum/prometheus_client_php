@@ -17,3 +17,7 @@ install: ## Install dependencies
 .PHONY: update
 update: ## Update dependencies
 	composer update
+
+.PHONY: test
+test: ## Execute tests
+	./vendor/bin/phpunit --coverage-text --colors=never --bootstrap ./vendor/autoload.php tests --log-junit ../build/logs/junit.xml --coverage-clover ../build/logs/clover.xml

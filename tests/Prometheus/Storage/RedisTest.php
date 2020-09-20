@@ -1,6 +1,6 @@
 <?php
 
-namespace Prometheus\Storage;
+namespace  Prometheus\Storage;
 
 use PHPUnit\Framework\TestCase;
 use Prometheus\Exception\StorageException;

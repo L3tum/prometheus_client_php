@@ -36,12 +36,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Prometheus\\": "src/Prometheus/"
+            "Prometheus\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "Test\\Prometheus\\": "tests/"
+        "psr-4": {
+            "Prometheus\\": "tests/Prometheus/"
         }
     },
     "extra": {
