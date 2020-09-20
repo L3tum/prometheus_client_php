@@ -2,6 +2,13 @@ name: Tests
 
 on: [ push, pull_request ]
 
+env:
+  # The hostname used to communicate with the Redis service container
+  REDIS_HOST: redis
+  # The default Redis port
+  REDIS_PORT: 6379
+  # Composer cache directory
+  COMPOSER_CACHE_DIR: ~/.composer/cache
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -14,13 +21,6 @@ jobs:
 
     name: P${{ matrix.php }} - ${{ matrix.os }}
 
-    env:
-      # The hostname used to communicate with the Redis service container
-      REDIS_HOST: redis
-      # The default Redis port
-      REDIS_PORT: 6379
-      # Composer cache directory
-      COMPOSER_CACHE_DIR: ~/.composer/cache
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ${{ COMPOSER_CACHE_DIR }}/files
+          path: ${{ env.COMPOSER_CACHE_DIR }}/files
           key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Setup PHP
