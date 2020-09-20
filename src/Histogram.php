@@ -23,14 +23,8 @@ class Histogram extends Collector
      * @param array $labels
      * @param array $buckets
      */
-    public function __construct(
-        Adapter $adapter,
-        $namespace,
-        $name,
-        $help,
-        $labels = [],
-        $buckets = null
-    ) {
+    public function __construct(Adapter $adapter, $namespace, $name, $help, $labels = [], $buckets = null)
+    {
         parent::__construct($adapter, $namespace, $name, $help, $labels);
 
         if (null === $buckets) {
@@ -57,16 +51,11 @@ class Histogram extends Collector
      */
     public static function getDefaultBuckets(): array
     {
-        return [
-            0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1.0, 2.5, 5.0, 7.5, 10.0,
-        ];
+        return [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1.0, 2.5, 5.0, 7.5, 10.0];
     }
 
-    public static function exponentialBuckets(
-        float $start,
-        float $growthFactor,
-        int $numberOfBuckets
-    ): array {
+    public static function exponentialBuckets(float $start, float $growthFactor, int $numberOfBuckets): array
+    {
         if ($numberOfBuckets < 1) {
             throw new InvalidArgumentException('Number of buckets must be a positive integer');
         }
@@ -93,10 +82,8 @@ class Histogram extends Collector
      * @param float $value e.g. 123
      * @param array $labels e.g. ['status', 'opcode']
      */
-    public function observe(
-        float $value,
-        array $labels = []
-    ): void {
+    public function observe(float $value, array $labels = []): void
+    {
         $this->assertLabelsAreDefinedCorrectly($labels);
 
         $this->storageAdapter->updateHistogram(

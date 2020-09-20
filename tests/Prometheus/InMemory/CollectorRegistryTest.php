@@ -2,8 +2,8 @@
 
 namespace Prometheus\InMemory;
 
-use Prometheus\Storage\InMemory;
 use Prometheus\AbstractCollectorRegistryTest;
+use Prometheus\Storage\InMemory;
 
 class CollectorRegistryTest extends AbstractCollectorRegistryTest
 {

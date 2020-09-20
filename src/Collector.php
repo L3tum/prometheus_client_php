@@ -37,13 +37,8 @@ abstract class Collector
      * @param string $help
      * @param array $labels
      */
-    public function __construct(
-        Adapter $storageAdapter,
-        $namespace,
-        $name,
-        $help,
-        $labels = []
-    ) {
+    public function __construct(Adapter $storageAdapter, $namespace, $name, $help, $labels = [])
+    {
         $this->storageAdapter = $storageAdapter;
         $metricName = ($namespace ? $namespace . '_' : '') . $name;
         if (!preg_match(self::RE_METRIC_LABEL_NAME, $metricName)) {

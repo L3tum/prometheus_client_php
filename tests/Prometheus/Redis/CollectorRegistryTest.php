@@ -2,8 +2,8 @@
 
 namespace Prometheus\Redis;
 
-use Prometheus\Storage\Redis;
 use Prometheus\AbstractCollectorRegistryTest;
+use Prometheus\Storage\Redis;
 
 /**
  * @requires extension redis

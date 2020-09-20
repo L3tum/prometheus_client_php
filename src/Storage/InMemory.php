@@ -219,11 +219,7 @@ class InMemory implements Adapter
 
     private function metaKey(array $data): string
     {
-        return implode(':', [
-            $data['type'],
-            $data['name'],
-            'meta',
-        ]);
+        return implode(':', [$data['type'], $data['name'], 'meta']);
     }
 
     private function valueKey(array $data): string
@@ -270,9 +266,8 @@ class InMemory implements Adapter
      * @param string $values
      * @throws RuntimeException
      */
-    private function decodeLabelValues(
-        $values
-    ): array {
+    private function decodeLabelValues($values): array
+    {
         $json = base64_decode($values, true);
         if (false === $json) {
             throw new RuntimeException('Cannot base64 decode label values');

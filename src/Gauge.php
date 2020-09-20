@@ -14,10 +14,8 @@ class Gauge extends Collector
      * @param float $value e.g. 123
      * @param array $labels e.g. ['status', 'opcode']
      */
-    public function set(
-        float $value,
-        array $labels = []
-    ): void {
+    public function set(float $value, array $labels = []): void
+    {
         $this->assertLabelsAreDefinedCorrectly($labels);
 
         $this->storageAdapter->updateGauge(

@@ -68,23 +68,13 @@ class CollectorRegistry
      * @param array $labels e.g. ['controller', 'action']
      * @throws MetricsRegistrationException
      */
-    public function registerGauge(
-        $namespace,
-        $name,
-        $help,
-        $labels = []
-    ): Gauge {
+    public function registerGauge($namespace, $name, $help, $labels = []): Gauge
+    {
         $metricIdentifier = self::metricIdentifier($namespace, $name);
         if (isset($this->gauges[$metricIdentifier])) {
             throw new MetricsRegistrationException('Metric already registered');
         }
-        $this->gauges[$metricIdentifier] = new Gauge(
-            $this->storageAdapter,
-            $namespace,
-            $name,
-            $help,
-            $labels
-        );
+        $this->gauges[$metricIdentifier] = new Gauge($this->storageAdapter, $namespace, $name, $help, $labels);
 
         return $this->gauges[$metricIdentifier];
     }
@@ -94,10 +84,8 @@ class CollectorRegistry
      * @param string $name
      * @throws MetricNotFoundException
      */
-    public function getGauge(
-        $namespace,
-        $name
-    ): Gauge {
+    public function getGauge($namespace, $name): Gauge
+    {
         $metricIdentifier = self::metricIdentifier($namespace, $name);
         if (!isset($this->gauges[$metricIdentifier])) {
             throw new MetricNotFoundException('Metric not found:' . $metricIdentifier);
@@ -113,12 +101,8 @@ class CollectorRegistry
      * @param array $labels e.g. ['controller', 'action']
      * @throws MetricsRegistrationException
      */
-    public function getOrRegisterGauge(
-        $namespace,
-        $name,
-        $help,
-        $labels = []
-    ): Gauge {
+    public function getOrRegisterGauge($namespace, $name, $help, $labels = []): Gauge
+    {
         try {
             $gauge = $this->getGauge($namespace, $name);
         } catch (MetricNotFoundException $e) {
@@ -135,23 +119,13 @@ class CollectorRegistry
      * @param array $labels e.g. ['controller', 'action']
      * @throws MetricsRegistrationException
      */
-    public function registerCounter(
-        $namespace,
-        $name,
-        $help,
-        $labels = []
-    ): Counter {
+    public function registerCounter($namespace, $name, $help, $labels = []): Counter
+    {
         $metricIdentifier = self::metricIdentifier($namespace, $name);
         if (isset($this->counters[$metricIdentifier])) {
             throw new MetricsRegistrationException('Metric already registered');
         }
-        $this->counters[$metricIdentifier] = new Counter(
-            $this->storageAdapter,
-            $namespace,
-            $name,
-            $help,
-            $labels
-        );
+        $this->counters[$metricIdentifier] = new Counter($this->storageAdapter, $namespace, $name, $help, $labels);
 
         return $this->counters[self::metricIdentifier($namespace, $name)];
     }
@@ -161,10 +135,8 @@ class CollectorRegistry
      * @param string $name
      * @throws MetricNotFoundException
      */
-    public function getCounter(
-        $namespace,
-        $name
-    ): Counter {
+    public function getCounter($namespace, $name): Counter
+    {
         $metricIdentifier = self::metricIdentifier($namespace, $name);
         if (!isset($this->counters[$metricIdentifier])) {
             throw new MetricNotFoundException('Metric not found:' . $metricIdentifier);
@@ -180,12 +152,8 @@ class CollectorRegistry
      * @param array $labels e.g. ['controller', 'action']
      * @throws MetricsRegistrationException
      */
-    public function getOrRegisterCounter(
-        $namespace,
-        $name,
-        $help,
-        $labels = []
-    ): Counter {
+    public function getOrRegisterCounter($namespace, $name, $help, $labels = []): Counter
+    {
         try {
             $counter = $this->getCounter($namespace, $name);
         } catch (MetricNotFoundException $e) {
@@ -203,13 +171,8 @@ class CollectorRegistry
      * @param array $buckets e.g. [100, 200, 300]
      * @throws MetricsRegistrationException
      */
-    public function registerHistogram(
-        $namespace,
-        $name,
-        $help,
-        $labels = [],
-        $buckets = null
-    ): Histogram {
+    public function registerHistogram($namespace, $name, $help, $labels = [], $buckets = null): Histogram
+    {
         $metricIdentifier = self::metricIdentifier($namespace, $name);
         if (isset($this->histograms[$metricIdentifier])) {
             throw new MetricsRegistrationException('Metric already registered');
@@ -231,10 +194,8 @@ class CollectorRegistry
      * @param string $name
      * @throws MetricNotFoundException
      */
-    public function getHistogram(
-        $namespace,
-        $name
-    ): Histogram {
+    public function getHistogram($namespace, $name): Histogram
+    {
         $metricIdentifier = self::metricIdentifier($namespace, $name);
         if (!isset($this->histograms[$metricIdentifier])) {
             throw new MetricNotFoundException('Metric not found:' . $metricIdentifier);
@@ -251,13 +212,8 @@ class CollectorRegistry
      * @param array $buckets e.g. [100, 200, 300]
      * @throws MetricsRegistrationException
      */
-    public function getOrRegisterHistogram(
-        $namespace,
-        $name,
-        $help,
-        $labels = [],
-        $buckets = null
-    ): Histogram {
+    public function getOrRegisterHistogram($namespace, $name, $help, $labels = [], $buckets = null): Histogram
+    {
         try {
             $histogram = $this->getHistogram($namespace, $name);
         } catch (MetricNotFoundException $e) {
@@ -271,10 +227,8 @@ class CollectorRegistry
      * @param $namespace
      * @param $name
      */
-    private static function metricIdentifier(
-        $namespace,
-        $name
-    ): string {
+    private static function metricIdentifier($namespace, $name): string
+    {
         return $namespace . ':' . $name;
     }
 }

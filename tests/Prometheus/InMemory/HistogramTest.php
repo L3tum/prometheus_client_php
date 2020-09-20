@@ -2,8 +2,8 @@
 
 namespace Prometheus\InMemory;
 
-use Prometheus\Storage\InMemory;
 use Prometheus\AbstractHistogramTest;
+use Prometheus\Storage\InMemory;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/

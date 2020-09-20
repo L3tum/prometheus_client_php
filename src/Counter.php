@@ -27,10 +27,8 @@ class Counter extends Collector
      * @param int $count e.g. 2
      * @param array $labels e.g. ['status', 'opcode']
      */
-    public function incBy(
-        $count,
-        array $labels = []
-    ): void {
+    public function incBy($count, array $labels = []): void
+    {
         $this->assertLabelsAreDefinedCorrectly($labels);
 
         $this->storageAdapter->updateCounter(

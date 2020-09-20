@@ -2,8 +2,8 @@
 
 namespace Prometheus\APC;
 
-use Prometheus\Storage\APC;
 use Prometheus\AbstractCollectorRegistryTest;
+use Prometheus\Storage\APC;
 
 /**
  * @requires extension apc

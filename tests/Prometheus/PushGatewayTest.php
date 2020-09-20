@@ -7,9 +7,6 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use Prometheus\CollectorRegistry;
-use Prometheus\MetricFamilySamples;
-use Prometheus\PushGateway;
 
 class PushGatewayTest extends TestCase
 {
@@ -25,10 +22,7 @@ class PushGatewayTest extends TestCase
             $this->createMock(MetricFamilySamples::class),
         ]);
 
-        $mockHandler = new MockHandler([
-            new Response(200),
-            new Response(202),
-        ]);
+        $mockHandler = new MockHandler([new Response(200), new Response(202)]);
         $handler = HandlerStack::create($mockHandler);
         $client = new Client(['handler' => $handler]);
 
@@ -50,10 +44,7 @@ class PushGatewayTest extends TestCase
             $this->createMock(MetricFamilySamples::class),
         ]);
 
-        $mockHandler = new MockHandler([
-            new Response(201),
-            new Response(300),
-        ]);
+        $mockHandler = new MockHandler([new Response(201), new Response(300)]);
         $handler = HandlerStack::create($mockHandler);
         $client = new Client(['handler' => $handler]);
 

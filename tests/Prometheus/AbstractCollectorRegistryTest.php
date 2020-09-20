@@ -3,10 +3,8 @@
 namespace  Prometheus;
 
 use PHPUnit\Framework\TestCase;
-use Prometheus\CollectorRegistry;
 use Prometheus\Exception\MetricNotFoundException;
 use Prometheus\Exception\MetricsRegistrationException;
-use Prometheus\RenderTextFormat;
 use Prometheus\Storage\Adapter;
 
 abstract class AbstractCollectorRegistryTest extends TestCase

@@ -26,10 +26,8 @@ class PushGateway
      * @param string $address host:port of the push gateway
      * @param ClientInterface $client
      */
-    public function __construct(
-        $address,
-        ClientInterface $client = null
-    ) {
+    public function __construct($address, ClientInterface $client = null)
+    {
         $this->address = $address;
         $this->client = $client ?? new Client();
     }
@@ -39,11 +37,8 @@ class PushGateway
      * Uses HTTP PUT.
      * @throws GuzzleException
      */
-    public function push(
-        CollectorRegistry $collectorRegistry,
-        string $job,
-        array $groupingKey = []
-    ): void {
+    public function push(CollectorRegistry $collectorRegistry, string $job, array $groupingKey = []): void
+    {
         $this->doRequest($collectorRegistry, $job, $groupingKey, 'put');
     }
 
@@ -54,11 +49,8 @@ class PushGateway
      * @param $groupingKey
      * @throws GuzzleException
      */
-    public function pushAdd(
-        CollectorRegistry $collectorRegistry,
-        string $job,
-        array $groupingKey = []
-    ): void {
+    public function pushAdd(CollectorRegistry $collectorRegistry, string $job, array $groupingKey = []): void
+    {
         $this->doRequest($collectorRegistry, $job, $groupingKey, 'post');
     }
 
@@ -67,10 +59,8 @@ class PushGateway
      * Uses HTTP POST.
      * @throws GuzzleException
      */
-    public function delete(
-        string $job,
-        array $groupingKey = []
-    ): void {
+    public function delete(string $job, array $groupingKey = []): void
+    {
         $this->doRequest(null, $job, $groupingKey, 'delete');
     }
 

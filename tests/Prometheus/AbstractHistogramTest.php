@@ -4,9 +4,6 @@ namespace Prometheus;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Prometheus\Histogram;
-use Prometheus\MetricFamilySamples;
-use Prometheus\Sample;
 use Prometheus\Storage\Adapter;
 
 /**
@@ -242,13 +239,7 @@ abstract class AbstractHistogramTest extends TestCase
     {
         // .005, .01, .025, .05, .075, .1, .25, .5, .75, 1.0, 2.5, 5.0, 7.5, 10.0
 
-        $histogram = new Histogram(
-            $this->adapter,
-            'test',
-            'some_metric',
-            'this is for testing',
-            []
-        );
+        $histogram = new Histogram($this->adapter, 'test', 'some_metric', 'this is for testing', []);
         $histogram->observe(0.11);
         $histogram->observe(0.03);
         $this->assertThat(
@@ -428,9 +419,8 @@ abstract class AbstractHistogramTest extends TestCase
      *
      * @param mixed $value The label value
      */
-    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues(
-        $value
-    ) {
+    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues($value)
+    {
         $label = 'foo';
         $histogram = new Histogram($this->adapter, 'test', 'some_metric', 'help', [$label], [1]);
         $histogram->observe(1, [$value]);

@@ -2,8 +2,8 @@
 
 namespace Prometheus\Redis;
 
-use Prometheus\Storage\Redis;
 use Prometheus\AbstractCounterTest;
+use Prometheus\Storage\Redis;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/

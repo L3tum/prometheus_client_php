@@ -2,8 +2,8 @@
 
 namespace Prometheus\APC;
 
-use Prometheus\Storage\APC;
 use Prometheus\AbstractHistogramTest;
+use Prometheus\Storage\APC;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/

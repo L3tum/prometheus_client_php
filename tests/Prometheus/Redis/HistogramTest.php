@@ -2,8 +2,8 @@
 
 namespace Prometheus\Redis;
 
-use Prometheus\Storage\Redis;
 use Prometheus\AbstractHistogramTest;
+use Prometheus\Storage\Redis;
 
 /**
  * See https://prometheus.io/docs/instrumenting/exposition_formats/

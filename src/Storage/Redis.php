@@ -102,12 +102,9 @@ class Redis implements Adapter
         $metrics = array_merge($metrics, $this->collectGauges());
         $metrics = array_merge($metrics, $this->collectCounters());
 
-        return array_map(
-            function (array $metric) {
-                return new MetricFamilySamples($metric);
-            },
-            $metrics
-        );
+        return array_map(function (array $metric) {
+            return new MetricFamilySamples($metric);
+        }, $metrics);
     }
 
     /**
@@ -291,10 +288,7 @@ LUA
 
             // We need set semantics.
             // This is the equivalent of array_unique but for arrays of arrays.
-            $allLabelValues = array_map(
-                'unserialize',
-                array_unique(array_map('serialize', $allLabelValues))
-            );
+            $allLabelValues = array_map('unserialize', array_unique(array_map('serialize', $allLabelValues)));
             sort($allLabelValues);
 
             foreach ($allLabelValues as $labelValues) {

@@ -4,9 +4,6 @@ namespace Prometheus;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Prometheus\Counter;
-use Prometheus\MetricFamilySamples;
-use Prometheus\Sample;
 use Prometheus\Storage\Adapter;
 
 /**
@@ -149,9 +146,8 @@ abstract class AbstractCounterTest extends TestCase
      *
      * @param mixed $value The label value
      */
-    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues(
-        $value
-    ) {
+    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues($value)
+    {
         $label = 'foo';
         $histogram = new Counter($this->adapter, 'test', 'some_metric', 'help', [$label]);
         $histogram->inc([$value]);

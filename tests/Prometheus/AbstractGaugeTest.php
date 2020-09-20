@@ -4,9 +4,6 @@ namespace Prometheus;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Prometheus\Gauge;
-use Prometheus\MetricFamilySamples;
-use Prometheus\Sample;
 use Prometheus\Storage\Adapter;
 
 /**
@@ -317,9 +314,8 @@ abstract class AbstractGaugeTest extends TestCase
      *
      * @param mixed $value The label value
      */
-    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues(
-        $value
-    ) {
+    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues($value)
+    {
         $label = 'foo';
         $histogram = new Gauge($this->adapter, 'test', 'some_metric', 'help', [$label]);
         $histogram->inc([$value]);

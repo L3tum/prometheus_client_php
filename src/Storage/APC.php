@@ -298,9 +298,8 @@ class APC implements Adapter
      * @param string $values
      * @throws RuntimeException
      */
-    private function decodeLabelValues(
-        $values
-    ): array {
+    private function decodeLabelValues($values): array
+    {
         $json = base64_decode($values, true);
         if (false === $json) {
             throw new RuntimeException('Cannot base64 decode label values');
