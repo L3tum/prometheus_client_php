@@ -47,46 +47,46 @@ abstract class AbstractHistogramTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'name' => 'test_some_metric',
-                            'help' => 'this is for testing',
-                            'type' => Histogram::TYPE,
+                            'name'       => 'test_some_metric',
+                            'help'       => 'this is for testing',
+                            'type'       => Histogram::TYPE,
                             'labelNames' => ['foo', 'bar'],
-                            'samples' => [
+                            'samples'    => [
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['lalal', 'lululu', 100],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['lalal', 'lululu', 200],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['lalal', 'lululu', 300],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['lalal', 'lululu', '+Inf'],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_count',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_count',
+                                    'labelNames'  => [],
                                     'labelValues' => ['lalal', 'lululu'],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_sum',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_sum',
+                                    'labelNames'  => [],
                                     'labelValues' => ['lalal', 'lululu'],
-                                    'value' => 368,
+                                    'value'       => 368,
                                 ],
                             ],
                         ]
@@ -116,46 +116,46 @@ abstract class AbstractHistogramTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'name' => 'test_some_metric',
-                            'help' => 'this is for testing',
-                            'type' => Histogram::TYPE,
+                            'name'       => 'test_some_metric',
+                            'help'       => 'this is for testing',
+                            'type'       => Histogram::TYPE,
                             'labelNames' => [],
-                            'samples' => [
+                            'samples'    => [
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [100],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [200],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [300],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['+Inf'],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_count',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_count',
+                                    'labelNames'  => [],
                                     'labelValues' => [],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_sum',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_sum',
+                                    'labelNames'  => [],
                                     'labelValues' => [],
-                                    'value' => 245,
+                                    'value'       => 245,
                                 ],
                             ],
                         ]
@@ -186,46 +186,46 @@ abstract class AbstractHistogramTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'name' => 'test_some_metric',
-                            'help' => 'this is for testing',
-                            'type' => Histogram::TYPE,
+                            'name'       => 'test_some_metric',
+                            'help'       => 'this is for testing',
+                            'type'       => Histogram::TYPE,
                             'labelNames' => [],
-                            'samples' => [
+                            'samples'    => [
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.1],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.2],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.3],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['+Inf'],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_count',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_count',
+                                    'labelNames'  => [],
                                     'labelValues' => [],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_sum',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_sum',
+                                    'labelNames'  => [],
                                     'labelValues' => [],
-                                    'value' => 0.41,
+                                    'value'       => 0.41,
                                 ],
                             ],
                         ]
@@ -257,112 +257,112 @@ abstract class AbstractHistogramTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'name' => 'test_some_metric',
-                            'help' => 'this is for testing',
-                            'type' => Histogram::TYPE,
+                            'name'       => 'test_some_metric',
+                            'help'       => 'this is for testing',
+                            'type'       => Histogram::TYPE,
                             'labelNames' => [],
-                            'samples' => [
+                            'samples'    => [
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.005],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.01],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.025],
-                                    'value' => 0,
+                                    'value'       => 0,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.05],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.075],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.1],
-                                    'value' => 1,
+                                    'value'       => 1,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.25],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.5],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [0.75],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [1.0],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [2.5],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [5],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [7.5],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => [10],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_bucket',
-                                    'labelNames' => ['le'],
+                                    'name'        => 'test_some_metric_bucket',
+                                    'labelNames'  => ['le'],
                                     'labelValues' => ['+Inf'],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_count',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_count',
+                                    'labelNames'  => [],
                                     'labelValues' => [],
-                                    'value' => 2,
+                                    'value'       => 2,
                                 ],
                                 [
-                                    'name' => 'test_some_metric_sum',
-                                    'labelNames' => [],
+                                    'name'        => 'test_some_metric_sum',
+                                    'labelNames'  => [],
                                     'labelValues' => [],
-                                    'value' => 0.14,
+                                    'value'       => 0.14,
                                 ],
                             ],
                         ]
@@ -428,8 +428,9 @@ abstract class AbstractHistogramTest extends TestCase
      *
      * @param mixed $value The label value
      */
-    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues($value)
-    {
+    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues(
+        $value
+    ) {
         $label = 'foo';
         $histogram = new Histogram($this->adapter, 'test', 'some_metric', 'help', [$label], [1]);
         $histogram->observe(1, [$value]);
@@ -495,6 +496,7 @@ abstract class AbstractHistogramTest extends TestCase
         for ($i = 32; $i <= 121; $i++) {
             $cases['ASCII code ' . $i] = [chr($i)];
         }
+
         return $cases;
     }
 }

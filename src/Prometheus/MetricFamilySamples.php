@@ -31,9 +31,6 @@ class MetricFamilySamples
      */
     private $samples = [];
 
-    /**
-     * @param array $data
-     */
     public function __construct(array $data)
     {
         $this->name = $data['name'];
@@ -45,25 +42,16 @@ class MetricFamilySamples
         }
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getHelp(): string
     {
         return $this->help;
@@ -77,17 +65,11 @@ class MetricFamilySamples
         return $this->samples;
     }
 
-    /**
-     * @return array
-     */
     public function getLabelNames(): array
     {
         return $this->labelNames;
     }
 
-    /**
-     * @return bool
-     */
     public function hasLabelNames(): bool
     {
         return !empty($this->labelNames);

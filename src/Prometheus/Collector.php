@@ -32,14 +32,18 @@ abstract class Collector
     protected $labels;
 
     /**
-     * @param Adapter $storageAdapter
      * @param string $namespace
      * @param string $name
      * @param string $help
      * @param array $labels
      */
-    public function __construct(Adapter $storageAdapter, $namespace, $name, $help, $labels = [])
-    {
+    public function __construct(
+        Adapter $storageAdapter,
+        $namespace,
+        $name,
+        $help,
+        $labels = []
+    ) {
         $this->storageAdapter = $storageAdapter;
         $metricName = ($namespace ? $namespace . '_' : '') . $name;
         if (!preg_match(self::RE_METRIC_LABEL_NAME, $metricName)) {
@@ -60,33 +64,21 @@ abstract class Collector
      */
     abstract public function getType();
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return array
-     */
     public function getLabelNames(): array
     {
         return $this->labels;
     }
 
-    /**
-     * @return string
-     */
     public function getHelp(): string
     {
         return $this->help;
     }
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return sha1($this->getName() . serialize($this->getLabelNames()));

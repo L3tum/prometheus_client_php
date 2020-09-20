@@ -10,7 +10,6 @@ use Test\Prometheus\AbstractGaugeTest;
  */
 class GaugeTest extends AbstractGaugeTest
 {
-
     public function configureAdapter()
     {
         $this->adapter = new InMemory();

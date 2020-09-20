@@ -17,15 +17,20 @@ class Histogram extends Collector
     private $buckets;
 
     /**
-     * @param Adapter $adapter
      * @param string $namespace
      * @param string $name
      * @param string $help
      * @param array $labels
      * @param array $buckets
      */
-    public function __construct(Adapter $adapter, $namespace, $name, $help, $labels = [], $buckets = null)
-    {
+    public function __construct(
+        Adapter $adapter,
+        $namespace,
+        $name,
+        $help,
+        $labels = [],
+        $buckets = null
+    ) {
         parent::__construct($adapter, $namespace, $name, $help, $labels);
 
         if (null === $buckets) {
@@ -33,15 +38,12 @@ class Histogram extends Collector
         }
 
         if (0 == count($buckets)) {
-            throw new InvalidArgumentException("Histogram must have at least one bucket.");
+            throw new InvalidArgumentException('Histogram must have at least one bucket.');
         }
 
         for ($i = 0; $i < count($buckets) - 1; $i++) {
             if ($buckets[$i] >= $buckets[$i + 1]) {
-                throw new InvalidArgumentException(
-                    "Histogram buckets must be in increasing order: " .
-                    $buckets[$i] . " >= " . $buckets[$i + 1]
-                );
+                throw new InvalidArgumentException('Histogram buckets must be in increasing order: ' . $buckets[$i] . ' >= ' . $buckets[$i + 1]);
             }
         }
         if (in_array('le', $labels, true)) {
@@ -52,7 +54,6 @@ class Histogram extends Collector
 
     /**
      * List of default buckets suitable for typical web application latency metrics
-     * @return array
      */
     public static function getDefaultBuckets(): array
     {
@@ -61,14 +62,11 @@ class Histogram extends Collector
         ];
     }
 
-    /**
-     * @param float $start
-     * @param float $growthFactor
-     * @param int $numberOfBuckets
-     * @return array
-     */
-    public static function exponentialBuckets(float $start, float $growthFactor, int $numberOfBuckets): array
-    {
+    public static function exponentialBuckets(
+        float $start,
+        float $growthFactor,
+        int $numberOfBuckets
+    ): array {
         if ($numberOfBuckets < 1) {
             throw new InvalidArgumentException('Number of buckets must be a positive integer');
         }
@@ -92,29 +90,28 @@ class Histogram extends Collector
     }
 
     /**
-     * @param double $value e.g. 123
+     * @param float $value e.g. 123
      * @param array $labels e.g. ['status', 'opcode']
      */
-    public function observe(float $value, array $labels = []): void
-    {
+    public function observe(
+        float $value,
+        array $labels = []
+    ): void {
         $this->assertLabelsAreDefinedCorrectly($labels);
 
         $this->storageAdapter->updateHistogram(
             [
-                'value' => $value,
-                'name' => $this->getName(),
-                'help' => $this->getHelp(),
-                'type' => $this->getType(),
-                'labelNames' => $this->getLabelNames(),
+                'value'       => $value,
+                'name'        => $this->getName(),
+                'help'        => $this->getHelp(),
+                'type'        => $this->getType(),
+                'labelNames'  => $this->getLabelNames(),
                 'labelValues' => $labels,
-                'buckets' => $this->buckets,
+                'buckets'     => $this->buckets,
             ]
         );
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return self::TYPE;

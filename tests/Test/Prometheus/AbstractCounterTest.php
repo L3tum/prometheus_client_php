@@ -41,16 +41,16 @@ abstract class AbstractCounterTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'type' => Counter::TYPE,
-                            'help' => 'this is for testing',
-                            'name' => 'test_some_metric',
+                            'type'       => Counter::TYPE,
+                            'help'       => 'this is for testing',
+                            'name'       => 'test_some_metric',
                             'labelNames' => ['foo', 'bar'],
-                            'samples' => [
+                            'samples'    => [
                                 [
                                     'labelValues' => ['lalal', 'lululu'],
-                                    'value' => 3,
-                                    'name' => 'test_some_metric',
-                                    'labelNames' => [],
+                                    'value'       => 3,
+                                    'name'        => 'test_some_metric',
+                                    'labelNames'  => [],
                                 ],
                             ],
                         ]
@@ -73,16 +73,16 @@ abstract class AbstractCounterTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'type' => Counter::TYPE,
-                            'help' => 'this is for testing',
-                            'name' => 'test_some_metric',
+                            'type'       => Counter::TYPE,
+                            'help'       => 'this is for testing',
+                            'name'       => 'test_some_metric',
                             'labelNames' => [],
-                            'samples' => [
+                            'samples'    => [
                                 [
                                     'labelValues' => [],
-                                    'value' => 1,
-                                    'name' => 'test_some_metric',
-                                    'labelNames' => [],
+                                    'value'       => 1,
+                                    'name'        => 'test_some_metric',
+                                    'labelNames'  => [],
                                 ],
                             ],
                         ]
@@ -106,16 +106,16 @@ abstract class AbstractCounterTest extends TestCase
                 [
                     new MetricFamilySamples(
                         [
-                            'type' => Counter::TYPE,
-                            'help' => 'this is for testing',
-                            'name' => 'test_some_metric',
+                            'type'       => Counter::TYPE,
+                            'help'       => 'this is for testing',
+                            'name'       => 'test_some_metric',
                             'labelNames' => ['foo', 'bar'],
-                            'samples' => [
+                            'samples'    => [
                                 [
                                     'labelValues' => ['lalal', 'lululu'],
-                                    'value' => 124,
-                                    'name' => 'test_some_metric',
-                                    'labelNames' => [],
+                                    'value'       => 124,
+                                    'name'        => 'test_some_metric',
+                                    'labelNames'  => [],
                                 ],
                             ],
                         ]
@@ -149,8 +149,9 @@ abstract class AbstractCounterTest extends TestCase
      *
      * @param mixed $value The label value
      */
-    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues($value)
-    {
+    public function isShouldAcceptAnySequenceOfBasicLatinCharactersForLabelValues(
+        $value
+    ) {
         $label = 'foo';
         $histogram = new Counter($this->adapter, 'test', 'some_metric', 'help', [$label]);
         $histogram->inc([$value]);
@@ -185,6 +186,7 @@ abstract class AbstractCounterTest extends TestCase
         for ($i = 32; $i <= 121; $i++) {
             $cases['ASCII code ' . $i] = [chr($i)];
         }
+
         return $cases;
     }
 }

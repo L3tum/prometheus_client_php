@@ -10,9 +10,6 @@ class Counter extends Collector
 {
     const TYPE = 'counter';
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return self::TYPE;
@@ -30,19 +27,21 @@ class Counter extends Collector
      * @param int $count e.g. 2
      * @param array $labels e.g. ['status', 'opcode']
      */
-    public function incBy($count, array $labels = []): void
-    {
+    public function incBy(
+        $count,
+        array $labels = []
+    ): void {
         $this->assertLabelsAreDefinedCorrectly($labels);
 
         $this->storageAdapter->updateCounter(
             [
-                'name' => $this->getName(),
-                'help' => $this->getHelp(),
-                'type' => $this->getType(),
-                'labelNames' => $this->getLabelNames(),
+                'name'        => $this->getName(),
+                'help'        => $this->getHelp(),
+                'type'        => $this->getType(),
+                'labelNames'  => $this->getLabelNames(),
                 'labelValues' => $labels,
-                'value' => $count,
-                'command' => Adapter::COMMAND_INCREMENT_INTEGER,
+                'value'       => $count,
+                'command'     => Adapter::COMMAND_INCREMENT_INTEGER,
             ]
         );
     }

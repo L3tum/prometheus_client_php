@@ -22,7 +22,7 @@ class PushGatewayTest extends TestCase
     {
         $mockedCollectorRegistry = $this->createMock(CollectorRegistry::class);
         $mockedCollectorRegistry->method('getMetricFamilySamples')->with()->willReturn([
-            $this->createMock(MetricFamilySamples::class)
+            $this->createMock(MetricFamilySamples::class),
         ]);
 
         $mockHandler = new MockHandler([
@@ -47,7 +47,7 @@ class PushGatewayTest extends TestCase
 
         $mockedCollectorRegistry = $this->createMock(CollectorRegistry::class);
         $mockedCollectorRegistry->method('getMetricFamilySamples')->with()->willReturn([
-            $this->createMock(MetricFamilySamples::class)
+            $this->createMock(MetricFamilySamples::class),
         ]);
 
         $mockHandler = new MockHandler([
@@ -70,7 +70,7 @@ class PushGatewayTest extends TestCase
 
         $mockedCollectorRegistry = $this->createMock(CollectorRegistry::class);
         $mockedCollectorRegistry->method('getMetricFamilySamples')->with()->willReturn([
-            $this->createMock(MetricFamilySamples::class)
+            $this->createMock(MetricFamilySamples::class),
         ]);
 
         $pushGateway = new PushGateway('http://foo.bar');

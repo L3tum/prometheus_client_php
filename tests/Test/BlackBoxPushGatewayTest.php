@@ -25,7 +25,7 @@ class BlackBoxPushGatewayTest extends TestCase
         $pushGateway->push($registry, 'my_job', ['instance' => 'foo']);
 
         $httpClient = new Client();
-        $metrics = $httpClient->get("http://pushgateway:9091/metrics")->getBody()->getContents();
+        $metrics = $httpClient->get('http://pushgateway:9091/metrics')->getBody()->getContents();
         $this->assertContains(
             '# HELP test_some_counter it increases
 # TYPE test_some_counter counter
@@ -36,7 +36,7 @@ test_some_counter{instance="foo",job="my_job",type="blue"} 6',
         $pushGateway->delete('my_job', ['instance' => 'foo']);
 
         $httpClient = new Client();
-        $metrics = $httpClient->get("http://pushgateway:9091/metrics")->getBody()->getContents();
+        $metrics = $httpClient->get('http://pushgateway:9091/metrics')->getBody()->getContents();
         $this->assertNotContains(
             '# HELP test_some_counter it increases
 # TYPE test_some_counter counter

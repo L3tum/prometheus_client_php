@@ -10,7 +10,6 @@ use Test\Prometheus\AbstractCollectorRegistryTest;
  */
 class CollectorRegistryTest extends AbstractCollectorRegistryTest
 {
-
     public function configureAdapter()
     {
         $this->adapter = new APC();

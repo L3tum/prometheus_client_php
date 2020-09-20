@@ -35,7 +35,6 @@ class BlackBoxTest extends TestCase
             $this->client->getAsync('/examples/some_gauge.php?c=0&adapter=' . $this->adapter),
             $this->client->getAsync('/examples/some_gauge.php?c=1&adapter=' . $this->adapter),
             $this->client->getAsync('/examples/some_gauge.php?c=2&adapter=' . $this->adapter),
-
         ];
 
         Promise\settle($promises)->wait();
@@ -43,7 +42,7 @@ class BlackBoxTest extends TestCase
         echo "\ntime: " . ($end - $start) . "\n";
 
         $metricsResult = $this->client->get('/examples/metrics.php?adapter=' . $this->adapter);
-        $body = (string)$metricsResult->getBody();
+        $body = (string) $metricsResult->getBody();
         echo "\nbody: " . $body . "\n";
         $this->assertThat(
             $body,
@@ -64,7 +63,9 @@ class BlackBoxTest extends TestCase
         $promises = [];
         $sum = 0;
         for ($i = 0; $i < 1100; $i++) {
-            $promises[] =  $this->client->getAsync('/examples/some_counter.php?c=' . $i . '&adapter=' . $this->adapter);
+            $promises[] = $this->client->getAsync(
+                '/examples/some_counter.php?c=' . $i . '&adapter=' . $this->adapter
+            );
             $sum += $i;
         }
 
@@ -73,7 +74,7 @@ class BlackBoxTest extends TestCase
         echo "\ntime: " . ($end - $start) . "\n";
 
         $metricsResult = $this->client->get('/examples/metrics.php?adapter=' . $this->adapter);
-        $body = (string)$metricsResult->getBody();
+        $body = (string) $metricsResult->getBody();
 
         $this->assertThat($body, $this->stringContains('test_some_counter{type="blue"} ' . $sum));
     }
@@ -102,9 +103,10 @@ class BlackBoxTest extends TestCase
         echo "\ntime: " . ($end - $start) . "\n";
 
         $metricsResult = $this->client->get('/examples/metrics.php?adapter=' . $this->adapter);
-        $body = (string)$metricsResult->getBody();
+        $body = (string) $metricsResult->getBody();
 
-        $this->assertThat($body, $this->stringContains(<<<EOF
+        $this->assertThat($body, $this->stringContains(
+            <<<EOF
 test_some_histogram_bucket{type="blue",le="0.1"} 1
 test_some_histogram_bucket{type="blue",le="1"} 2
 test_some_histogram_bucket{type="blue",le="2"} 3

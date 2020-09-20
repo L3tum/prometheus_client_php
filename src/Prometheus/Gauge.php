@@ -11,29 +11,28 @@ class Gauge extends Collector
     const TYPE = 'gauge';
 
     /**
-     * @param double $value e.g. 123
+     * @param float $value e.g. 123
      * @param array $labels e.g. ['status', 'opcode']
      */
-    public function set(float $value, array $labels = []): void
-    {
+    public function set(
+        float $value,
+        array $labels = []
+    ): void {
         $this->assertLabelsAreDefinedCorrectly($labels);
 
         $this->storageAdapter->updateGauge(
             [
-                'name' => $this->getName(),
-                'help' => $this->getHelp(),
-                'type' => $this->getType(),
-                'labelNames' => $this->getLabelNames(),
+                'name'        => $this->getName(),
+                'help'        => $this->getHelp(),
+                'type'        => $this->getType(),
+                'labelNames'  => $this->getLabelNames(),
                 'labelValues' => $labels,
-                'value' => $value,
-                'command' => Adapter::COMMAND_SET,
+                'value'       => $value,
+                'command'     => Adapter::COMMAND_SET,
             ]
         );
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return self::TYPE;
@@ -49,7 +48,6 @@ class Gauge extends Collector
 
     /**
      * @param $value
-     * @param array $labels
      */
     public function incBy($value, array $labels = []): void
     {
@@ -57,13 +55,13 @@ class Gauge extends Collector
 
         $this->storageAdapter->updateGauge(
             [
-                'name' => $this->getName(),
-                'help' => $this->getHelp(),
-                'type' => $this->getType(),
-                'labelNames' => $this->getLabelNames(),
+                'name'        => $this->getName(),
+                'help'        => $this->getHelp(),
+                'type'        => $this->getType(),
+                'labelNames'  => $this->getLabelNames(),
                 'labelValues' => $labels,
-                'value' => $value,
-                'command' => Adapter::COMMAND_INCREMENT_FLOAT,
+                'value'       => $value,
+                'command'     => Adapter::COMMAND_INCREMENT_FLOAT,
             ]
         );
     }

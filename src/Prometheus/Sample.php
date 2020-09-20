@@ -22,13 +22,12 @@ class Sample
     private $labelValues;
 
     /**
-     * @var int|double
+     * @var int|float
      */
     private $value;
 
     /**
      * Sample constructor.
-     * @param array $data
      */
     public function __construct(array $data)
     {
@@ -38,41 +37,29 @@ class Sample
         $this->value = $data['value'];
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return array
-     */
     public function getLabelNames(): array
     {
-        return (array)$this->labelNames;
+        return (array) $this->labelNames;
     }
 
-    /**
-     * @return array
-     */
     public function getLabelValues(): array
     {
-        return (array)$this->labelValues;
+        return (array) $this->labelValues;
     }
 
     /**
-     * @return int|double
+     * @return int|float
      */
     public function getValue(): string
     {
         return (string) $this->value;
     }
 
-    /**
-     * @return bool
-     */
     public function hasLabelNames(): bool
     {
         return !empty($this->labelNames);

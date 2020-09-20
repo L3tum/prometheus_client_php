@@ -4,12 +4,10 @@ namespace Test\Prometheus;
 
 use PHPUnit\Framework\TestCase;
 use Prometheus\CollectorRegistry;
-use Prometheus\Histogram;
+use Prometheus\Exception\MetricNotFoundException;
+use Prometheus\Exception\MetricsRegistrationException;
 use Prometheus\RenderTextFormat;
 use Prometheus\Storage\Adapter;
-use Prometheus\Storage\Redis;
-use Prometheus\Exception\MetricsRegistrationException;
-use Prometheus\Exception\MetricNotFoundException;
 
 abstract class AbstractCollectorRegistryTest extends TestCase
 {
@@ -41,7 +39,6 @@ abstract class AbstractCollectorRegistryTest extends TestCase
         $g->set(35, ['ddd']);
         $g->set(35, ['aaa']);
         $g->set(35, ['ccc']);
-
 
         $registry = new CollectorRegistry($this->adapter);
         $this->assertThat(
@@ -222,10 +219,10 @@ EOF
     public function itShouldForbidRegisteringTheSameCounterWithDifferentLabels()
     {
         $registry = new CollectorRegistry($this->adapter);
-        $registry->registerCounter('foo', 'metric', 'help', ["foo", "bar"]);
+        $registry->registerCounter('foo', 'metric', 'help', ['foo', 'bar']);
 
         $this->expectException(MetricsRegistrationException::class);
-        $registry->registerCounter('foo', 'metric', 'help', ["spam", "eggs"]);
+        $registry->registerCounter('foo', 'metric', 'help', ['spam', 'eggs']);
     }
 
     /**
@@ -246,10 +243,10 @@ EOF
     public function itShouldForbidRegisteringTheSameHistogramWithDifferentLabels()
     {
         $registry = new CollectorRegistry($this->adapter);
-        $registry->registerCounter('foo', 'metric', 'help', ["foo", "bar"]);
+        $registry->registerCounter('foo', 'metric', 'help', ['foo', 'bar']);
 
         $this->expectException(MetricsRegistrationException::class);
-        $registry->registerCounter('foo', 'metric', 'help', ["spam", "eggs"]);
+        $registry->registerCounter('foo', 'metric', 'help', ['spam', 'eggs']);
     }
 
     /**
@@ -270,10 +267,10 @@ EOF
     public function itShouldForbidRegisteringTheSameGaugeWithDifferentLabels()
     {
         $registry = new CollectorRegistry($this->adapter);
-        $registry->registerGauge('foo', 'metric', 'help', ["foo", "bar"]);
+        $registry->registerGauge('foo', 'metric', 'help', ['foo', 'bar']);
 
         $this->expectException(MetricsRegistrationException::class);
-        $registry->registerGauge('foo', 'metric', 'help', ["spam", "eggs"]);
+        $registry->registerGauge('foo', 'metric', 'help', ['spam', 'eggs']);
     }
 
     /**
@@ -284,7 +281,7 @@ EOF
         $registry = new CollectorRegistry($this->adapter);
 
         $this->expectException(MetricNotFoundException::class);
-        $registry->getGauge("not_here", "go_away");
+        $registry->getGauge('not_here', 'go_away');
     }
 
     /**
@@ -293,8 +290,8 @@ EOF
     public function itShouldNotRegisterACounterTwice()
     {
         $registry = new CollectorRegistry($this->adapter);
-        $counterA = $registry->getOrRegisterCounter("foo", "bar", "Help text");
-        $counterB = $registry->getOrRegisterCounter("foo", "bar", "Help text");
+        $counterA = $registry->getOrRegisterCounter('foo', 'bar', 'Help text');
+        $counterB = $registry->getOrRegisterCounter('foo', 'bar', 'Help text');
 
         $this->assertSame($counterA, $counterB);
     }
@@ -305,8 +302,8 @@ EOF
     public function itShouldNotRegisterAGaugeTwice()
     {
         $registry = new CollectorRegistry($this->adapter);
-        $gaugeA = $registry->getOrRegisterGauge("foo", "bar", "Help text");
-        $gaugeB = $registry->getOrRegisterGauge("foo", "bar", "Help text");
+        $gaugeA = $registry->getOrRegisterGauge('foo', 'bar', 'Help text');
+        $gaugeB = $registry->getOrRegisterGauge('foo', 'bar', 'Help text');
 
         $this->assertSame($gaugeA, $gaugeB);
     }
@@ -317,12 +314,11 @@ EOF
     public function itShouldNotRegisterAHistogramTwice()
     {
         $registry = new CollectorRegistry($this->adapter);
-        $histogramA = $registry->getOrRegisterHistogram("foo", "bar", "Help text");
-        $histogramB = $registry->getOrRegisterHistogram("foo", "bar", "Help text");
+        $histogramA = $registry->getOrRegisterHistogram('foo', 'bar', 'Help text');
+        $histogramB = $registry->getOrRegisterHistogram('foo', 'bar', 'Help text');
 
         $this->assertSame($histogramA, $histogramB);
     }
-
 
     abstract public function configureAdapter();
 }

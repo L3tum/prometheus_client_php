@@ -17,21 +17,9 @@ interface Adapter
      */
     public function collect();
 
-    /**
-     * @param array $data
-     * @return void
-     */
     public function updateHistogram(array $data): void;
 
-    /**
-     * @param array $data
-     * @return void
-     */
     public function updateGauge(array $data): void;
 
-    /**
-     * @param array $data
-     * @return void
-     */
     public function updateCounter(array $data): void;
 }
