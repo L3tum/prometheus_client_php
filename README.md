@@ -1,6 +1,6 @@
 # A prometheus client library written in PHP
 
-![Tests](https://github.com/lkaemmerling/prometheus_client_php/workflows/Tests/badge.svg)
+![Tests](https://github.com/l3tum/prometheus_client_php/workflows/Tests/badge.svg)
 
 This library uses Redis or APCu to do the client side aggregation.
 If using Redis, we recommend running a local Redis instance next to your PHP workers.
