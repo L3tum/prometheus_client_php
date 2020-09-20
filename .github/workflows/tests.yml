@@ -16,7 +16,7 @@ jobs:
       fail-fast: true
       matrix:
         os: [ ubuntu-latest ]
-        php: [ 7.2, 7.3, 7.4 ]
+        php: [ 7.3, 7.4 ]
         redis-version: [ 6 ]
 
     name: P${{ matrix.php }} - ${{ matrix.os }}
@@ -40,11 +40,14 @@ jobs:
 
       - name: Install dependencies
         run: make install
+
       - name: Start Redis
         uses: supercharge/redis-github-action@1.1.0
         with:
           redis-version: ${{ matrix.redis-version }}
-      - name: Run PHP Code Sniffer
+
+      - name: Run Codestyle checker
         run: make codestyle
+
       - name: Execute tests
         run: make test
