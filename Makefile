@@ -12,11 +12,11 @@ deps-security-test: ## Check security
 
 .PHONY: install
 install: ## Install dependencies
-	composer install
+	composer install --no-interaction --optimize-autoloader
 
 .PHONY: update
 update: ## Update dependencies
-	composer update
+	composer update --no-interaction
 
 .PHONY: test
 test: ## Execute tests
