@@ -28,7 +28,7 @@
         "migrify/config-transformer": "^0.3.39",
         "escapestudios/symfony2-coding-standard": "3.9.*",
         "pdepend/pdepend": "2.8.*",
-        "phploc/phploc": "6.0.* || 7.0.*",
+        "phploc/phploc": "5.* || 6.* || 7.0.*",
         "phpmd/phpmd": "2.9.*"
     },
     "suggest": {
