@@ -51,11 +51,11 @@ class Psr6Adapter implements Adapter
             $item = $this->pool->getItem($key);
             $metaData = json_decode(base64_decode($key), true);
             $data = [
-                'name' => $metaData['name'],
-                'help' => $metaData['help'],
-                'type' => $metaData['type'],
+                'name'       => $metaData['name'],
+                'help'       => $metaData['help'],
+                'type'       => $metaData['type'],
                 'labelNames' => $metaData['labelNames'],
-                'buckets' => $metaData['buckets'],
+                'buckets'    => $metaData['buckets'],
             ];
 
             $histoHash = $data['name'] . json_encode($metaData['labelNames']);
@@ -74,41 +74,41 @@ class Psr6Adapter implements Adapter
         $metrics = [];
 
         // Iterate through all histograms
-        foreach ($histograms as $hash => $histogram) {
+        foreach ($histograms as $histogram) {
             $acc = 0;
-            foreach ($histogram['bucket_values'] as $bucketName => $bucketValue) {
+            foreach ($histogram['bucket_values'] as $bucketValue) {
                 if (!isset($bucketValue)) {
                     $histogram['samples'][] = [
-                        'name' => $histogram['metadata']['name'] . '_bucket',
-                        'labelNames' => ['le'],
+                        'name'        => $histogram['metadata']['name'] . '_bucket',
+                        'labelNames'  => ['le'],
                         'labelValues' => array_merge($histogram['metadata']['labelValues']),
-                        'value' => $acc
+                        'value'       => $acc,
                     ];
                 } else {
                     $acc += $bucketValue;
                     $histogram['samples'][] = [
-                        'name' => $histogram['metadata']['name'] . '_bucket',
-                        'labelNames' => ['le'],
+                        'name'        => $histogram['metadata']['name'] . '_bucket',
+                        'labelNames'  => ['le'],
                         'labelValues' => array_merge($histogram['metadata']['labelValues']),
-                        'value' => $acc
+                        'value'       => $acc,
                     ];
                 }
             }
 
             // Add count
             $histogram['samples'][] = [
-                'name' => $histogram['metadata']['name'] . '_count',
-                'labelNames' => [],
+                'name'        => $histogram['metadata']['name'] . '_count',
+                'labelNames'  => [],
                 'labelValues' => $histogram['metadata']['labelValues'],
-                'value' => $acc
+                'value'       => $acc,
             ];
 
             // Add sum
             $histogram['samples'][] = [
-                'name' => $histogram['metadata']['name'] . '_sum',
-                'labelNames' => [],
+                'name'        => $histogram['metadata']['name'] . '_sum',
+                'labelNames'  => [],
                 'labelValues' => $histogram['metadata']['labelValues'],
-                'value' => $histogram['buckets']['sum']
+                'value'       => $histogram['buckets']['sum'],
             ];
 
             unset($histogram['bucket_values']);
@@ -133,9 +133,9 @@ class Psr6Adapter implements Adapter
             $gaugeItem = $this->pool->getItem($counterKey);
             $metaData = json_decode(base64_decode($counterKey));
             $data = [
-                'name' => $metaData['name'],
-                'help' => $metaData['help'],
-                'type' => $metaData['type'],
+                'name'       => $metaData['name'],
+                'help'       => $metaData['help'],
+                'type'       => $metaData['type'],
                 'labelNames' => $metaData['labelNames'],
             ];
 
@@ -147,10 +147,10 @@ class Psr6Adapter implements Adapter
             }
 
             $gauges[$gaugeHash]['samples'][] = [
-                'name' => $data['name'],
-                'labelNames' => [],
+                'name'        => $data['name'],
+                'labelNames'  => [],
                 'labelValues' => $metaData['labelValues'],
-                'value' => $gaugeItem->get(),
+                'value'       => $gaugeItem->get(),
             ];
         }
 
@@ -186,9 +186,9 @@ class Psr6Adapter implements Adapter
             $counterItem = $this->pool->getItem($counterKey);
             $metaData = json_decode(base64_decode($counterKey));
             $data = [
-                'name' => $metaData['name'],
-                'help' => $metaData['help'],
-                'type' => $metaData['type'],
+                'name'       => $metaData['name'],
+                'help'       => $metaData['help'],
+                'type'       => $metaData['type'],
                 'labelNames' => $metaData['labelNames'],
             ];
 
@@ -200,10 +200,10 @@ class Psr6Adapter implements Adapter
             }
 
             $counters[$counterHash]['samples'][] = [
-                'name' => $data['name'],
-                'labelNames' => [],
+                'name'        => $data['name'],
+                'labelNames'  => [],
                 'labelValues' => $metaData['labelValues'],
-                'value' => $counterItem->get(),
+                'value'       => $counterItem->get(),
             ];
         }
 
@@ -266,10 +266,7 @@ class Psr6Adapter implements Adapter
         unset($metricsMetaData['value']);
         unset($metricsMetaData['command']);
 
-        return implode(':', [
-            self::PROMETHEUS_PREFIX,
-            base64_encode(json_encode($metricsMetaData))
-        ]);
+        return implode(':', [self::PROMETHEUS_PREFIX, base64_encode(json_encode($metricsMetaData))]);
     }
 
     private function registerNewHistogramBucketKey(string $key)
