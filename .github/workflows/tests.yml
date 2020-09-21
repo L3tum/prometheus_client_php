@@ -50,4 +50,9 @@ jobs:
         run: make codestyle
 
       - name: Execute tests
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: redis, apc, apcu
+          coverage: none
         run: make test
