@@ -22,4 +22,4 @@ update: ## Update dependencies
 
 .PHONY: test
 test: ## Execute tests
-	./vendor/bin/phpunit --coverage-text --colors=never --bootstrap ./vendor/autoload.php tests --log-junit ../build/logs/junit.xml --coverage-clover ../build/logs/clover.xml
+	./vendor/bin/phpunit --bootstrap ./vendor/autoload.php tests
