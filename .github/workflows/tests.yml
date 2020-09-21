@@ -39,7 +39,7 @@ jobs:
           coverage: none
 
       - name: Enable APC extension
-        run: php -d 'apc.enable_cli=1' -d 'apc.enabled=1'
+        run: sudo apt install php-apcu
 
       - name: Install dependencies
         run: make install
