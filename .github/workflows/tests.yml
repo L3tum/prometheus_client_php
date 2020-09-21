@@ -40,7 +40,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: make update -- --${{ matrix.dependency-version }}
+        run: make DEPENDENCY_VERSION=${{ matrix.dependency-version }} update
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.1.0

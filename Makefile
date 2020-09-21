@@ -1,3 +1,5 @@
+DEPENDENCY_VERSION=--prefer-stable
+
 .PHONY: codestyle
 codestyle: ## Run codestyle
 	./vendor/bin/ecs --no-progress-bar check . --config easy-coding-standard.php
@@ -16,7 +18,7 @@ install: ## Install dependencies
 
 .PHONY: update
 update: ## Update dependencies
-	composer update --no-interaction --prefer-dist --no-suggest
+	composer update --no-interaction --prefer-dist --no-suggest ${DEPENDENCY_VERSION}
 
 .PHONY: test
 test: ## Execute tests
