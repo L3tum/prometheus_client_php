@@ -13,10 +13,10 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-        php: [ 7.2, 7.3, 7.4, 8.0 ]
+        php: [ 7.2, 7.3, 7.4 ]
         redis-version: [ 6 ]
 
     name: P${{ matrix.php }} - ${{ matrix.os }}
