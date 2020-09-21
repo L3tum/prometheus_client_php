@@ -20,7 +20,7 @@ jobs:
         redis-version: [ 6 ]
         dependency-version: [ prefer-lowest, prefer-stable ]
 
-    name: P${{ matrix.php }} - ${{ matrix.os }}
+    name: PHP${{ matrix.php }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
@@ -36,11 +36,11 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: redis, apc, apcu
+          extensions: redis
           coverage: none
 
       - name: Install dependencies
-        run: make DEPENDENCY_VERSION=${{ matrix.dependency-version }} update
+        run: composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.1.0
@@ -51,4 +51,4 @@ jobs:
         run: make codestyle
 
       - name: Execute tests
-        run: php -d 'apc.enable_cli = 1' && make test
+        run: vendor/bin/phpunit
