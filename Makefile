@@ -16,7 +16,7 @@ install: ## Install dependencies
 
 .PHONY: update
 update: ## Update dependencies
-	composer update --no-interaction
+	composer update --no-interaction --prefer-dist --no-suggest
 
 .PHONY: test
 test: ## Execute tests

@@ -18,6 +18,7 @@ jobs:
         os: [ ubuntu-latest ]
         php: [ 7.2, 7.3, 7.4 ]
         redis-version: [ 6 ]
+        dependency-version: [ prefer-lowest, prefer-stable ]
 
     name: P${{ matrix.php }} - ${{ matrix.os }}
 
@@ -39,7 +40,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: make install
+        run: make update -- --${{ matrix.dependency-version }}
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.1.0
@@ -50,9 +51,4 @@ jobs:
         run: make codestyle
 
       - name: Execute tests
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: redis, apc, apcu
-          coverage: none
         run: make test
