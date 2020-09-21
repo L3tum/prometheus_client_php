@@ -51,4 +51,4 @@ jobs:
         run: make codestyle
 
       - name: Execute tests
-        run: php -d "apc.enable_cli=1" && php -i && make test
+        run: php -d 'apc.enable_cli = 1' && make test
