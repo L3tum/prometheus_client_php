@@ -51,4 +51,6 @@ jobs:
         run: make codestyle
 
       - name: Execute tests
-        run: make test
+        run:
+          - php -i
+          - make test
