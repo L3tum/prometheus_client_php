@@ -39,7 +39,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+        run: make DEPENDENCY_VERSION=${{ matrix.dependency-version }} update
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.1.0
@@ -50,4 +50,4 @@ jobs:
         run: make codestyle
 
       - name: Execute tests
-        run: vendor/bin/phpunit
+        run: make test
