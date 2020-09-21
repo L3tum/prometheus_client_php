@@ -4,3 +4,4 @@
 /var/
 composer.phar
 .phpunit.result.cache
+composer.lock
