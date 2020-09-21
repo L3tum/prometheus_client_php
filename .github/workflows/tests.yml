@@ -35,11 +35,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: redis
+          extensions: redis, apc, apcu
           coverage: none
-
-      - name: Enable APC extension
-        run: sudo apt install php-apcu
 
       - name: Install dependencies
         run: make install

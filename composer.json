@@ -29,7 +29,9 @@
         "escapestudios/symfony2-coding-standard": "3.9.*",
         "pdepend/pdepend": "2.8.*",
         "phploc/phploc": "5.* || 6.* || 7.0.*",
-        "phpmd/phpmd": "2.9.*"
+        "phpmd/phpmd": "2.9.*",
+        "ext-apc": "*",
+        "ext-redis": "*"
     },
     "suggest": {
         "ext-redis": "Required if using Redis.",
@@ -42,7 +44,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Prometheus\\": "tests/Prometheus/"
+            "Prometheus\\": "tests/"
         }
     },
     "extra": {
